@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: civiclens
+      POSTGRES_USER: civiclens
+      POSTGRES_PASSWORD: civiclens_change_me
+    volumes:
+      - civiclens_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U civiclens -d civiclens"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://civiclens:civiclens_change_me@db:5432/civiclens
+      PORT: 5000
+      SEED_DEMO_DATA: "true"
+      SECRET_KEY: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET"
+      FLASK_DEBUG: "0"
+      ALLOW_UNVERIFIED_REGISTRATION: "false"
+      DEV_OTP: "false"
+      OTP_PROVIDER: "2factor"
+      OTP_API_MODE: "v4"
+      OTP_API_URL: "https://2factor.in/API/V1/OTP/SEND"
+      OTP_API_KEY: ""
+      OTP_TEMPLATE_NAME: "LOGIN_OTP"
+      SMTP_HOST: "smtp.gmail.com"
+      SMTP_PORT: "587"
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      SMTP_FROM: ""
+      SESSION_COOKIE_SECURE: "true"
+    ports:
+      - "5000:5000"
+
+volumes:
+  civiclens_pgdata:
