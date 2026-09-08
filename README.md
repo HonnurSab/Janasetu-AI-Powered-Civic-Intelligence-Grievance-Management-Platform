@@ -138,6 +138,33 @@ Structured complaint data can later support:
 - duplicate complaint detection
 
 ---
+# Janasetu
+
+[Your existing introduction]
+
+## Project Overview
+
+[Your existing correct content]
+
+## 📸 Product Walkthrough
+
+[PASTE THE NEW SCREENSHOT SECTION HERE]
+
+## 🧩 Engineering Highlights
+
+[PASTE THE NEW engineering section here]
+
+## 🧠 AI / LLM Architecture
+
+[Your EXISTING README content]
+
+## 🗺️ GIS
+
+[Your EXISTING README content]
+
+## 🔐 Security
+
+[Your EXISTING README content]
 
 # 3. LLM Implementation
 
