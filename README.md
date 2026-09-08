@@ -138,33 +138,6 @@ Structured complaint data can later support:
 - duplicate complaint detection
 
 ---
-# Janasetu
-
-[Your existing introduction]
-
-## Project Overview
-
-[Your existing correct content]
-
-## 📸 Product Walkthrough
-
-### 1. Citizen Experience
-![Citizen Login](docs/Screrenshots/Screenshot 2026-09-08 211337.png)
-
-### 2. Citizen Dashboard
-![Citizen Dashboard](docs/Screrenshots/Screenshot 2026-09-08 211509.png)
-
-### 3. Complaint Submission
-![Raise Complaint](docs/Screrenshots/Screenshot 2026-09-08 211558.png)
-
-### 4. Karnataka GIS
-![GIS](docs/Screrenshots/Screenshot 2026-09-08 212249.png)
-
-### 5. Department Workflow
-![docs/Screrenshots/Screenshot 2026-09-08 212417.png)
-
-### 6. AI Assistant
-![AI Assistant](docs/Screrenshots/Screenshot 2026-09-08 211726.png)
 
 # 3. LLM Implementation
 
