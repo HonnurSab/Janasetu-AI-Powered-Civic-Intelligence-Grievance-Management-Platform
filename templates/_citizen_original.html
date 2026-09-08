@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicLens India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CL</div>
+        <div class="brand-text">
+          <div class="name">CivicLens</div>
+          <div class="locale">India</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="home">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+          Home
+        </button>
+        <button class="nav-item" data-view="report">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11.3A7 7 0 0 1 12 3a7 7 0 0 1 7 6.7C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.7" r="2.3"/></svg>
+          Report
+        </button>
+        <button class="nav-item" data-view="complaints">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg>
+          My Complaints
+        </button>
+        <button class="nav-item" data-view="nearby">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Nearby
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-profile">
+        <div class="avatar"></div>
+        <div class="who">
+          <div class="n">Resident</div>
+          <div class="w">Whitefield ward</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+
+      <!-- ---------------- HOME VIEW ---------------- -->
+      <section class="view active" id="view-home">
+
+        <div class="hero">
+          <h1>How can we improve your city?</h1>
+          <p>Report an issue, track a complaint, or explore civic issues around your area.</p>
+          <button class="btn btn-primary" onclick="goTo('report')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Report an Issue
+          </button>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-card accent-blue">
+            <div class="num">3</div>
+            <div class="lbl">My Complaints</div>
+          </div>
+          <div class="kpi-card accent-high">
+            <div class="num">1</div>
+            <div class="lbl">In Progress</div>
+          </div>
+          <div class="kpi-card accent-ok">
+            <div class="num">2</div>
+            <div class="lbl">Resolved</div>
+          </div>
+          <div class="kpi-card">
+            <div class="num">5</div>
+            <div class="lbl">Nearby Issues</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel map-card">
+            <div class="panel-head">
+              <div>
+                <h2>Issues around you</h2>
+                <div class="sub">Whitefield, Bengaluru · within 2 km</div>
+              </div>
+            </div>
+            <div class="map-surface" id="home-map">
+              <div class="map-pin critical" style="top:28%; left:34%;"></div>
+              <div class="map-pin high" style="top:42%; left:66%;"></div>
+              <div class="map-pin ok" style="top:64%; left:24%;"></div>
+              <div class="map-pin critical" style="top:70%; left:58%;"></div>
+              <div class="map-pin high" style="top:18%; left:60%;"></div>
+              <div class="map-you" style="top:50%; left:47%;">
+                <div class="dot"></div>
+                <div class="tag">You</div>
+              </div>
+            </div>
+            <div class="map-legend">
+              <span><i class="legend-dot" style="background:var(--critical)"></i>Critical</span>
+              <span><i class="legend-dot" style="background:var(--high)"></i>High</span>
+              <span><i class="legend-dot" style="background:var(--ok)"></i>Resolved</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="panel insight-card">
+              <div class="tag-row">
+                <span>🧠</span> CivicLens Insight
+              </div>
+              <p>There are 5 reported civic issues within 2 km of your current location.</p>
+              <p>Water issues are the most common this week.</p>
+            </div>
+
+            <div class="panel copilot-card">
+              <div class="panel-head">
+                <div>
+                  <h2>🤖 CivicLens Assistant</h2>
+                  <div class="sub">Ask about civic issues, your complaints, or services available in your area.</div>
+                </div>
+              </div>
+
+              <div class="copilot-log" id="copilot-log">
+                <div class="copilot-msg bot">Hi — ask me anything about issues near you or your open complaints.</div>
+              </div>
+
+              <div class="copilot-examples">
+                <button class="chip-suggest" onclick="askCopilot('What issues are near me?')">What issues are near me?</button>
+                <button class="chip-suggest" onclick="askCopilot('Why hasn\'t my complaint been resolved?')">Why hasn't my complaint been resolved?</button>
+                <button class="chip-suggest" onclick="askCopilot('How do I report a water leak?')">How do I report a water leak?</button>
+              </div>
+
+              <div class="copilot-input-row">
+                <input type="text" id="copilot-input" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendCopilot()" />
+                <button class="icon-btn" onclick="sendCopilot()" aria-label="Send">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="m5 12 14-7-7 14-2-5-5-2Z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel section-gap">
+          <div class="panel-head">
+            <div>
+              <h2>Issues around you</h2>
+              <div class="sub">By category, last 7 days</div>
+            </div>
+          </div>
+          <div class="mix-list" id="issue-mix"></div>
+        </div>
+      </section>
+
+      <!-- ---------------- REPORT VIEW ---------------- -->
+      <section class="view" id="view-report">
+        <div class="hero" style="padding-top:8px;">
+          <h1 style="font-size:26px;">Report an issue</h1>
+          <p>Describe what you saw. CivicLens sorts it to the right department automatically.</p>
+        </div>
+
+        <div class="report-grid">
+          <div class="panel">
+            <label class="field-label" for="complaintText">What happened?</label>
+            <textarea class="report-input" id="complaintText" placeholder="Describe the issue — e.g. Streetlight has been off for a week near the MG Road bus stop..."></textarea>
+
+            <div class="category-result" id="resultBox">
+              <span>Category:</span>
+              <span class="cat-name" id="categoryResult">—</span>
+              <span class="cat-conf">Confidence: <span id="confidenceResult">—</span></span>
+            </div>
+            <p class="field-hint" id="category-hint">Category — AI will detect automatically once you submit.</p>
+
+            <div style="margin-top:20px;">
+              <label class="field-label">Location</label>
+              <div class="loc-row">
+                <button class="btn btn-secondary" onclick="useMyLocation()">📍 Use my current location</button>
+                <span class="loc-status" id="loc-status">No location set</span>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;">
+              <label class="field-label">Add evidence</label>
+              <div class="evidence-row">
+                <label class="evidence-tile">
+                  <span class="glyph">📷</span>Photos
+                  <input type="file" accept="image/*" multiple style="display:none" onchange="addEvidence(this.files)" />
+                </label>
+                <label class="evidence-tile">
+                  <span class="glyph">🎥</span>Video
+                  <input type="file" accept="video/*" style="display:none" onchange="addEvidence(this.files)" />
+                </label>
+                <label class="evidence-tile">
+                  <span class="glyph">📄</span>Document
+                  <input type="file" accept=".pdf,.doc,.docx" style="display:none" onchange="addEvidence(this.files)" />
+                </label>
+              </div>
+              <div class="evidence-list" id="evidence-list"></div>
+            </div>
+
+            <button class="btn btn-primary btn-block" style="margin-top:22px;" onclick="submitReport()">Submit Report</button>
+
+            <div class="confirm-toast" id="confirm-toast">
+              ✓ Report submitted — you can track it under My Complaints.
+            </div>
+          </div>
+
+          <div class="report-side">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Tips for a faster fix</h2>
+                </div>
+              </div>
+              <p class="field-hint" style="margin-bottom:8px;">Mention a landmark or nearby address — it helps the field team find the spot.</p>
+              <p class="field-hint" style="margin-bottom:8px;">A clear photo speeds up verification.</p>
+              <p class="field-hint">You'll get a complaint ID once submitted, so you can track progress anytime.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------------- MY COMPLAINTS VIEW ---------------- -->
+      <section class="view" id="view-complaints">
+        <div class="hero" style="padding-top:8px;">
+          <h1 style="font-size:26px;">My complaints</h1>
+          <p>Everything you've reported, and where it stands.</p>
+        </div>
+
+        <div class="complaint-list" id="complaint-list"></div>
+      </section>
+
+      <!-- ---------------- NEARBY VIEW ---------------- -->
+      <section class="view" id="view-nearby">
+        <div class="hero" style="padding-top:8px;">
+          <h1 style="font-size:26px;">📍 Issues around you</h1>
+          <p>Showing civic issues within <span id="radius-label">2 km</span> of your current location.</p>
+        </div>
+
+        <div class="panel section-gap">
+          <div class="filter-label">Category</div>
+          <div class="filter-row" id="category-filters">
+            <button class="chip active" data-cat="all">All</button>
+            <button class="chip" data-cat="roads">Roads</button>
+            <button class="chip" data-cat="water">Water</button>
+            <button class="chip" data-cat="garbage">Garbage</button>
+            <button class="chip" data-cat="streetlights">Streetlights</button>
+            <button class="chip" data-cat="transport">Transport</button>
+          </div>
+
+          <div class="filter-label">Within</div>
+          <div class="filter-row" id="radius-filters">
+            <button class="chip" data-r="500 m">500 m</button>
+            <button class="chip active" data-r="1 km">1 km</button>
+            <button class="chip" data-r="2 km">2 km</button>
+            <button class="chip" data-r="5 km">5 km</button>
+          </div>
+        </div>
+
+        <div class="panel section-gap">
+          <div class="map-surface" style="min-height:260px;">
+            <div class="map-pin critical" style="top:24%; left:38%;"></div>
+            <div class="map-pin high" style="top:36%; left:64%;"></div>
+            <div class="map-pin high" style="top:58%; left:22%;"></div>
+            <div class="map-pin critical" style="top:68%; left:55%;"></div>
+            <div class="map-pin ok" style="top:20%; left:70%;"></div>
+            <div class="map-you" style="top:50%; left:47%;">
+              <div class="dot"></div>
+              <div class="tag">You</div>
+            </div>
+          </div>
+          <div class="nearby-summary">
+            <span><i class="legend-dot" style="background:var(--critical)"></i>2 Critical</span>
+            <span><i class="legend-dot" style="background:var(--high)"></i>2 High</span>
+            <span><i class="legend-dot" style="background:var(--ok)"></i>1 Medium</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>5 issues nearby</h2>
+            </div>
+          </div>
+          <div class="complaint-list" id="nearby-list"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

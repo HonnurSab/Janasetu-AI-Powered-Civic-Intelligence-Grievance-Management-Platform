@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Janasetu · Citizen Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+Kannada:wght@500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="authBody">
+<div class="registerShell">
+  <div class="brand registerBrand"><b>ಜ</b><div><strong>Janasetu</strong><small>ಜನಸೇತು · Citizen Registration</small></div></div>
+  <div class="registerCard">
+    <div>
+      <span class="eyebrow">CREATE CITIZEN ACCOUNT</span>
+      <span class="registerKannada">ಜನಸೇತುಗೆ ಸೇರಿ</span>
+      <h1>Join Janasetu</h1>
+      <p class="muted">Register with your own email. Your account can only access your personal complaints and public aggregated civic information.</p>
+    </div>
+    {% if error %}<div class="errorBox">{{ error }}</div>{% endif %}
+    <form method="post" class="registerGrid">
+      <label>Full name<input name="name" required placeholder="Your full name"></label>
+      <label>Email<input name="email" type="email" required placeholder="you@example.com"></label>
+      <label>Mobile number<input name="phone" placeholder="+91 ..."></label>
+      <label>Preferred language
+        <select name="language">
+          <option value="en">English</option>
+          <option value="kn">ಕನ್ನಡ</option>
+        </select>
+      </label>
+      <label>District
+        <select name="district">
+          <option value="Bagalkot">Bagalkot</option>
+          <option value="Ballari">Ballari (Bellary)</option>
+          <option value="Belagavi">Belagavi (Belgaum)</option>
+          <option value="Bengaluru Rural">Bengaluru Rural</option>
+          <option value="Bengaluru Urban" selected>Bengaluru Urban</option>
+          <option value="Bidar">Bidar</option>
+          <option value="Chamarajanagar">Chamarajanagar</option>
+          <option value="Chikkaballapura">Chikkaballapura</option>
+          <option value="Chikkamagaluru">Chikkamagaluru (Chikmagalur)</option>
+          <option value="Chitradurga">Chitradurga</option>
+          <option value="Dakshina Kannada">Dakshina Kannada</option>
+          <option value="Davanagere">Davanagere</option>
+          <option value="Dharwad">Dharwad</option>
+          <option value="Gadag">Gadag</option>
+          <option value="Hassan">Hassan</option>
+          <option value="Haveri">Haveri</option>
+          <option value="Kalaburagi">Kalaburagi (Gulbarga)</option>
+          <option value="Kodagu">Kodagu</option>
+          <option value="Kolar">Kolar</option>
+          <option value="Koppal">Koppal</option>
+          <option value="Mandya">Mandya</option>
+          <option value="Mysuru">Mysuru (Mysore)</option>
+          <option value="Raichur">Raichur</option>
+          <option value="Ramanagara">Ramanagara</option>
+          <option value="Shivamogga">Shivamogga (Shimoga)</option>
+          <option value="Tumakuru">Tumakuru (Tumkur)</option>
+          <option value="Udupi">Udupi</option>
+          <option value="Uttara Kannada">Uttara Kannada (Karwar)</option>
+          <option value="Vijayanagara">Vijayanagara</option>
+          <option value="Vijayapura">Vijayapura (Bijapur)</option>
+          <option value="Yadgir">Yadgir</option>
+        </select>
+      </label>
+      <label>Ward / locality<input name="ward" placeholder="Ward or locality"></label>
+      <label class="span2">Address<textarea name="address" placeholder="Address (optional)"></textarea></label>
+      <label>Password<input name="password" type="password" minlength="8" required placeholder="Minimum 8 characters"></label>
+      <label>Confirm password<input id="confirm" type="password" minlength="8" required placeholder="Repeat password"></label>
+      <div class="span2 formActions">
+        <a href="/login">Back to login</a>
+        <button class="primary" name="skip_otp" value="0" type="submit" onclick="if(this.form.password.value!==document.getElementById('confirm').value){event.preventDefault();alert('Passwords do not match')}">Create account &amp; verify</button>
+      </div>
+      {% if allow_unverified %}
+      <div class="span2 demoRegisterOption">
+        <button class="secondaryButton" name="skip_otp" value="1" type="submit" onclick="if(this.form.password.value!==document.getElementById('confirm').value){event.preventDefault();alert('Passwords do not match')}">Register without OTP</button>
+        <small class="muted">For deployments that enable quick registration. You can keep OTP verification available separately.</small>
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+</body>
+</html>

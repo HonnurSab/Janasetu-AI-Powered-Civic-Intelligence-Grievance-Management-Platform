@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Janasetu · Secure Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+Kannada:wght@500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="authBody">
+<div class="authShell">
+  <section class="authHero">
+    <svg class="heroMap" viewBox="0 0 520 640" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g class="heroMap-grid" stroke="#2c4569" stroke-width="1">
+        <path d="M0 120H520 M0 260H520 M0 400H520 M0 520H520"/>
+        <path d="M90 0V640 M230 0V640 M360 0V640 M460 0V640"/>
+      </g>
+      <path class="heroMap-route" d="M20 520 L90 520 L90 400 L230 400 L230 260 L360 260 L360 120 L460 120 L460 40" stroke="#f2a530" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g class="heroMap-pins" fill="#f2a530">
+        <circle cx="90" cy="400" r="6"/>
+        <circle cx="230" cy="260" r="6"/>
+        <circle cx="360" cy="120" r="6"/>
+      </g>
+      <circle class="heroMap-origin" cx="20" cy="520" r="8" fill="#0f9c8f"/>
+      <circle class="heroMap-dest" cx="460" cy="40" r="9" fill="#fff"/>
+    </svg>
+    <div class="brand"><img class="brandLogo" src="/static/assets/janasetu-logo.png" alt="Janasetu"><div><strong>Janasetu</strong><small>ಜನಸೇತು · Karnataka Civic Intelligence</small></div></div>
+    <div class="heroBottom">
+      <div class="heroCopy">
+        <span class="eyebrow">SECURE CIVIC PLATFORM</span>
+        <h1>Report. Route. Resolve.</h1>
+        <span class="heroKannada">ವರದಿ ಮಾಡಿ · ರವಾನಿಸಿ · ಪರಿಹರಿಸಿ</span>
+        <p>Citizen services, department operations and city intelligence on one privacy-aware platform.</p>
+        <div class="authRoleGrid">
+          <div><b>Citizen</b><span>Register with your own email and manage only your complaints.</span></div>
+          <div><b>Department</b><span>Use official credentials issued by the administrator.</span></div>
+          <div><b>Administrator</b><span>Operate the city/state command centre and governance controls.</span></div>
+        </div>
+      </div>
+      <div class="heroFooterTag"><b>ನಮ್ಮ ನಾಡು</b> · <b>ನಮ್ಮ ಜವಾಬ್ದಾರಿ</b> · <b>ಉತ್ತಮ ನಾಳೆ</b> &nbsp;—&nbsp; Our people · Our responsibility · A brighter Karnataka</div>
+    </div>
+  </section>
+
+  <section class="authCard">
+    <div class="authTop">
+      <span class="eyebrow">WELCOME BACK</span>
+      <h2>Sign in to Janasetu</h2>
+      <p>Use your registered email or official account.</p>
+    </div>
+    {% if request.args.get('registered') %}<div class="successBox">Registration successful. You can sign in now.</div>{% endif %}
+    {% if error %}<div class="errorBox">{{ error }}</div>{% endif %}
+    <form method="post" class="authForm">
+      <label>Email / official username</label>
+      <input name="user_id" type="email" autocomplete="username" required placeholder="name@example.com">
+      <label>Password</label>
+      <input name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
+      <button class="primary big" type="submit">Sign in securely</button>
+    </form>
+    <div class="authDivider"><span>Citizen access</span></div>
+    <a class="secondaryButton" href="/register">Create a citizen account</a>
+    <div class="demoBox">
+      <b>Demo access</b>
+      <span>Citizen: citizen1@civiclens.local / Citizen@123</span>
+      <span>Department: roads_and_infrastructure@civiclens.local / Dept@123</span>
+      <span>Admin: admin@civiclens.local / Admin@123</span>
+      <details><summary>View all department demo accounts</summary>
+        <div class="demoDeptList">
+          <span>Solid Waste: solid_waste_management@civiclens.local</span>
+          <span>Roads: roads_and_infrastructure@civiclens.local</span>
+          <span>Water: water_supply_and_sewerage@civiclens.local</span>
+          <span>Electricity: electricity_utility@civiclens.local</span>
+          <span>Drainage: storm_water_drainage@civiclens.local</span>
+          <span>Police: police_and_public_safety@civiclens.local</span>
+          <span>Ward Office: ward_office@civiclens.local</span>
+          <small>Password for all demo department accounts: <b>Dept@123</b></small>
+        </div>
+      </details>
+    </div>
+  </section>
+</div>
+</body>
+</html>
