@@ -148,23 +148,23 @@ Structured complaint data can later support:
 
 ## 📸 Product Walkthrough
 
-[PASTE THE NEW SCREENSHOT SECTION HERE]
+### 1. Citizen Experience
+![Citizen Login](docs/Screrenshots/LOGIN.png)
 
-## 🧩 Engineering Highlights
+### 2. Citizen Dashboard
+![Citizen Dashboard](docs/Screrenshots/DASHBOARD.png)
 
-[PASTE THE NEW engineering section here]
+### 3. Complaint Submission
+![Raise Complaint](docs/Screrenshots/RAISE-COMPLAINT.png)
 
-## 🧠 AI / LLM Architecture
+### 4. Karnataka GIS
+![GIS](docs/Screrenshots/MAP.png)
 
-[Your EXISTING README content]
+### 5. Department Workflow
+![Department](docs/Screrenshots/DEPARTMENT.png)
 
-## 🗺️ GIS
-
-[Your EXISTING README content]
-
-## 🔐 Security
-
-[Your EXISTING README content]
+### 6. AI Assistant
+![AI Assistant](docs/Screrenshots/AI.png)
 
 # 3. LLM Implementation
 
